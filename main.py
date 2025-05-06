@@ -123,9 +123,6 @@ def ai_supervisor_chat():
     )
     st.write(response.choices[0].message.content)
 
-    return response.choices[0].message.content
-    except Exception as e:
-        return f"⚠️ Error: {str(e)}"
 
 # --------------------------
 # 🤖 AI Supervisor Chatbot
