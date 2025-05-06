@@ -595,7 +595,7 @@ def main():
 
 if __name__ == "__main__":
     if 'OPENAI_API_KEY' in st.secrets:
-        openai.api_key = st.secrets.OPENAI_API_KEY
+        openai.api_key = st.secrets["OPENAI_API_KEY"]
     else:
         with st.sidebar:
             st.warning("Enter OpenAI API Key")
