@@ -168,7 +168,7 @@ def ai_supervisor_chat():
                 context += f"Career values: {st.session_state.responses.get('career_values', [])}."
 
             # Stream response from OpenAI
-            stream = client.chat.completions.create(
+            stream = openai.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system",
