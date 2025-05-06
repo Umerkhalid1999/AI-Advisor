@@ -113,17 +113,27 @@ import streamlit as st
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-def get_ai_response(*args):
-    response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful AI supervisor."},
-            {"role": "user", "content": "How should I improve my project?"}
-        ], 
-        temperature=0.7,
-        max_tokens=350
-    )
-    st.write(response.choices[0].message.content)
+def get_ai_response(prompt, context=""):
+    try:
+        response = openai.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": f"""
+                You are an advanced college advisor AI. Provide:
+                - Specific major recommendations based on student profile
+                - Career path insights with salary ranges
+                - Skill development roadmap
+                - Comparative analysis with traditional methods
+                Context: {context}
+                """},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=250
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        return f"⚠️ Error: {str(e)}"
 
 
 # --------------------------
