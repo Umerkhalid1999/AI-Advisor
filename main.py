@@ -129,7 +129,7 @@ def get_ai_response(prompt, context=""):
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=250
+            max_tokens=370
         )
         return response.choices[0].message.content
     except Exception as e:
