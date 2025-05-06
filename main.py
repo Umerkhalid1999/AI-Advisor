@@ -113,7 +113,7 @@ import streamlit as st
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-def ai_supervisor_chat():
+def get_ai_response():
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
