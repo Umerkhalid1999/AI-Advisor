@@ -119,7 +119,9 @@ def ai_supervisor_chat():
         messages=[
             {"role": "system", "content": "You are a helpful AI supervisor."},
             {"role": "user", "content": "How should I improve my project?"}
-        ]
+        ], 
+        temperature=0.7,
+        max_tokens=350
     )
     st.write(response.choices[0].message.content)
 
