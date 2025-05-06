@@ -103,7 +103,7 @@ import json
 import altair as alt
 
 # Initialize OpenAI client
-client = OpenAI()  # Will use environment variable OPENAI_API_KEY
+client = OpenAI(api_key = st.secrets["OPENAI_API_KEY"])  # Will use environment variable OPENAI_API_KEY
 
 # --------------------------
 # 🧠 Updated AI Configuration (GPT-3.5)
