@@ -103,7 +103,7 @@ import json
 import altair as alt
 
 # Initialize OpenAI client
-client = OpenAI(st.secrets["OPENAI_API_KEY"])  # Will use environment variable OPENAI_API_KEY
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # --------------------------
 # 🧠 Updated AI Configuration (GPT-3.5)
@@ -113,16 +113,9 @@ def get_ai_response(prompt, context=""):
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": f"""
-                You are an advanced college advisor AI. Provide:
-                - Specific major recommendations based on student profile
-                - Career path insights with salary ranges
-                - Skill development roadmap
-                - Comparative analysis with traditional methods
-                Context: {context}
-                """},
-                {"role": "user", "content": prompt}
-            ],
+            {"role": "system", "content": "You are a helpful AI advisor."},
+            {"role": "user", "content": prompt}
+        ],
             temperature=0.7,
             max_tokens=250
         )
