@@ -108,7 +108,7 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 # --------------------------
 # 🧠 Updated AI Configuration (GPT-3.5)
 # --------------------------
-def get_ai_response(prompt, context=""):
+def get_ai_response(prompt):
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
